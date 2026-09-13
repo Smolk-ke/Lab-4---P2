@@ -145,6 +145,7 @@ public class Animal {
 				break;
 			}
 		} while (opcao != 5); 
+		scanner.close();
 	}
 	
 	
