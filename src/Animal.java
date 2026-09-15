@@ -20,15 +20,11 @@ public class Animal {
 		fome += 5;
 		if (fome > 100) {
 			fome = 100;
-		}else if (fome < 0) {
-			fome = 0;
 		}
 		
 		energia -= 3;
 		if(energia < 0) {
 			energia = 0;
-		}else if (energia > 100) {
-			energia = 100;
 		}
 		
 		if (fome >= 80) {
@@ -40,8 +36,6 @@ public class Animal {
 		
 		if (felicidade < 0) {
 			felicidade = 0;
-		}else if (felicidade > 100) {
-			felicidade = 100;
 		}
 	}
 	
@@ -118,33 +112,43 @@ public class Animal {
 		System.out.println("4. Dormir");
 		System.out.println("5. Sair");
 		int opcao;
-		
+
+		System.out.print("Escolha uma opção: ");
+		opcao = scanner.nextInt();
+
 		do {
+			System.out.println("Fome: "+ bicho.getFome());
+			System.out.println("Energia: "+ bicho.getEnergia());
+			System.out.println("Felicidade: "+ bicho.getFelicidade());
+			if (opcao < 1 && opcao > 5) {
+				System.out.println("Opção não reconhecida. Informe um valor no range correto.");
+			} else {
+				switch (opcao) {
+					case 1:
+						bicho.getStatus();
+						break;
+					case 2:
+						System.out.print("Quantidade de alimento: ");
+						int qtdAlimento = scanner.nextInt();
+						bicho.alimentar(qtdAlimento);
+						break;
+					case 3:
+						bicho.brincar();
+						break;
+					case 4:
+						bicho.dormir();
+						break;
+					case 5:
+						System.out.println("Jogo encerrado.");
+						System.out.println("Fome: " + bicho.getFome());
+						System.out.println("Energia: " + bicho.getEnergia());
+						System.out.println("Felicidade: " + bicho.getFelicidade());
+						break;
+				}
+			}
 			System.out.print("Escolha uma opção: ");
 			opcao = scanner.nextInt();
-			switch (opcao) {
-			case 1:
-				bicho.getStatus();
-				break;
-			case 2:
-				System.out.print("Quantidade de alimento: ");
-				int qtdAlimento= scanner.nextInt();
-				bicho.alimentar(qtdAlimento);
-				break;
-			case 3:
-				bicho.brincar();
-				break;
-			case 4:
-				bicho.dormir();
-				break;
-			case 5:
-				System.out.println("Jogo encerrado.");
-				System.out.println("Fome: "  + bicho.getFome());
-				System.out.println("Energia: " + bicho.getEnergia());
-				System.out.println("Felicidade: " + bicho.getFelicidade());
-				break;
-			}
-		} while (opcao != 5); 
+		} while (opcao != 5) ;
 		scanner.close();
 	}
 	
